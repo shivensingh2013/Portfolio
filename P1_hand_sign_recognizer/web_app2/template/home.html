@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/staticFiles/main.css">
+</head>
+
+  <body>
+    <h1>Predicting the number of fingers!!</h1>
+   <p style="color:blue;">Choose image file to upload</p>
+
+    <form method="POST" enctype="multipart/form-data" action="/" target = '_self'>
+        <input type="file" id="myFile" name="uploaded-file" accept=".jpg">
+        <input type="submit" value="Submit">
+    </form>
+
+
+    <form method="get" enctype="multipart/form-data" action="/take_pic" target = '_self'>
+                  <input type="submit" value="Camera">
+     </form> 
+  <br>
+  <br>
+  <br>
+
+
+  </body>
+
+
+</html>
