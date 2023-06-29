@@ -5,6 +5,8 @@ import cv2
 import tensorflow.keras.models as tfkm
 import numpy as np
 import matplotlib.pyplot as plt
+from camera import VideoCamera
+
 
 #*** Backend operation
  
@@ -53,35 +55,24 @@ def uploadFile():
 
 @app.route('/take_pic')
 def take_picture():
-    return render_template_string('''
-<video id="video" width="640" height="480" autoplay style="background-color: grey"></video>
-<button id="snap">Take Photo</button>
-<canvas id="canvas" width="640" height="480" style="background-color: grey"></canvas>
+    cam = cv2.VideoCapture(0)
+    video_stream = VideoCamera()
+    return render_template_string()
 
-<script>
+def upload():
+    if request.method == 'POST':
+        #fs = request.files['snap'] # it raise error when there is no `snap` in form
+        fs = request.files.get('snap')
+        if fs:
+            print('FileStorage:', fs)
+            print('filename:', fs.filename)
+            fs.save('image.jpg')
+            return 'Got Snap!'
+        else:
+            return 'You forgot Snap!'
+    
+    return 'Hello World!'
 
-// Elements for taking the snapshot
-var video = document.getElementById('video');
-var canvas = document.getElementById('canvas');
-var context = canvas.getContext('2d');
-
-// Get access to the camera!
-if(navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
-    // Not adding `{ audio: true }` since we only want video now
-    navigator.mediaDevices.getUserMedia({ video: true }).then(function(stream) {
-        //video.src = window.URL.createObjectURL(stream);
-        video.srcObject = stream; // assing stream to <video>
-        video.play();             // play stream
-    });
-}
-
-// Trigger photo take
-document.getElementById("snap").addEventListener("click", function() {
-    context.drawImage(video, 0, 0, 640, 480);  // copy video frame to canvas
-});
-
-</script>
-''')
 
 def get_model():
     json_file_path = r"C:\Users\IHG6KOR\Desktop\shiv\CNN_deeplearning\P1_hand_sign_recognizer\model_pickle\signdetect.pkl"
