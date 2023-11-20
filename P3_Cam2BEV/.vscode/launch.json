@@ -1,0 +1,25 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        
+        {
+            "name": "Python: Current File",
+            "type": "python",
+            "request": "launch",
+            "program": "${file}",
+            "console": "integratedTerminal",
+            "justMyCode": true,
+            // "args" : ["--output", "C:/Users/IHG6KOR/Desktop/shiv/Portfolio/shivensingh2013.github.io/P3_Cam2BEV/testing/out/cam2bev_data/" ,"--drone","Cam2BEV/preprocessing/camera_configs/1_FRLR/drone.yaml","C:/Users/IHG6KOR/Desktop/shiv/Portfolio/shivensingh2013.github.io/P3_Cam2BEV/Cam2BEV/preprocessing/camera_configs/1_FRLR/front.yaml ","C:/Users/IHG6KOR/Desktop/shiv/Portfolio/shivensingh2013.github.io/P3_Cam2BEV/testing/input/images/front.png"]
+            
+            "args" : 
+            ["--output", "C:/Users/IHG6KOR/Desktop/shiv/Portfolio/shivensingh2013.github.io/P3_Cam2BEV/testing/out/nuscene/" ,
+            "--drone","C:/Users/IHG6KOR/Desktop/shiv/Portfolio/shivensingh2013.github.io/P3_Cam2BEV/testing/input/nuscenes/nuscene/Sample1/config/drone_nu.yaml",
+            "C:/Users/IHG6KOR/Desktop/shiv/Portfolio/shivensingh2013.github.io/P3_Cam2BEV/testing/input/nuscenes/nuscene/Sample1/config/cam_front_left.yaml ",
+            "C:/Users/IHG6KOR/Desktop/shiv/Portfolio/shivensingh2013.github.io/P3_Cam2BEV/testing/input/nuscenes/nuscene/Sample1/Images/CAM_FRONT_LEFT.png"]
+
+        }
+    ]
+}
