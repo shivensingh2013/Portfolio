@@ -50,3 +50,7 @@ Prints -
 
 
 #### Running the webapp
+
+To run the app
+1) Go to terminal with stream lit installed - (activate cam2bev_env)
+2) streamlit run webapp_cam2bev
