@@ -7,7 +7,8 @@ import shutil
 import yaml
 from Scripts.utils import quart_to_angles
 from Scripts.ipm import generate_ipm_image
-
+import streamlit as st
+from PIL import Image
 class cam2bev_image:
     
     def __init__(self,image_name:str, input_path:str):
@@ -21,19 +22,23 @@ class cam2bev_image:
 
     def print_image(self,input_path:str,img_name:str):
         # create figure
-        fig = plt.figure(figsize=(30, 10))
-        rows = 1
-        columns =7
+        # fig = plt.figure(figsize=(30, 10))
+        # rows = 1
+        # columns =10
         count =0 
+        cols = st.columns(4)
         for i in pathlib.Path(input_path).iterdir():
             if not (i.is_file()):
                 count+=1
-                fig.add_subplot(rows, columns, count)
                 path = str(i/img_name)
                 im = img.imread(path)
-                plt.imshow(im)
-                plt.axis('off')
-                plt.title(i.parts[-1])
+                count=count%4
+                cols[count].image(im,i.parts[-1],width = 200,use_column_width=True)
+                # fig.add_subplot(rows, columns, count)
+                # plt.imshow(im)
+                # plt.axis('off')
+                # plt.title(i.parts[-1])
+
         return
 
 
@@ -80,7 +85,7 @@ class nuscene_image:
 
     def generate_1_bev(self,sample,n):
         ##Generate folder structure for input
-        print("processing sample",sample)
+        # print("processing sample",sample)
         self.create_folder(n)
 
         ## create input config and image files for IPM ops
@@ -143,7 +148,7 @@ class nuscene_image:
                 self.generate_1_bev(my_sample,count)
                 next_token = my_sample["next"]
                 # print("Now processing", next_token)
-            print(str(count) +" Generation complete")
+            st.text(str(count) +" / 10 sample processed")
         return 
 
     def create_cam2bev_config(self, path, sensor, egopose,angle):
@@ -181,15 +186,22 @@ class nuscene_image:
         return outpath
 
 
+    def print_result(self,inp,out,folder,frame):
+        ## print inputs to streamlit and outputs to streamlit as an animation frame level
+        st.text("Input camera images")
+        count =0 
+        col_count = 3
+        cols = st.columns(col_count)
+        for i in pathlib.Path(inp+folder+"//"+str(frame)+"/images").iterdir():
+            count+=1
+            im = Image.open(i)
+            count=count%col_count
+            cols[count].image(im,i.parts[-1],width = 200,use_column_width=True)
 
-    def run_ipm(self):
-
-
-        return
-
-
-
-    
+        st.text("Output camera images")
+        im = Image.open(out+folder+"//"+str(frame)+".jpg")
+        st.image(im,"BEV",width = 400)
+        return 
 
 
 
