@@ -30,3 +30,23 @@ Step3 : !wget https://www.nuscenes.org/data/v1.0-mini.tgz  # Download the nuScen
 Step4 :  Uncompress the nuScenes mini split.
 Step 5: !tar -xf "C:\Users\IHG6KOR\Downloads\v1.0-mini.tgz" -C "nuscene\data\sets\nuscenes"  
 Step 6: !pip install nuscenes-devkit &> /dev/null  # Install nuScenes.
+
+
+### How to run 
+
+#### Inputs
+For nuscene dataset , 
+
+We need to choose the following:
+1) Scene number (1-10):
+2) Nuscenes dataset location
+3) Name of folder where we can store the output data
+
+#### Output
+
+Prints -
+1) the input images (camera)
+2) Bird's Eye view stitched from the images
+
+
+#### Running the webapp
