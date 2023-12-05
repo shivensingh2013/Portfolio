@@ -60,7 +60,7 @@ elif rad =="Play with Nuscenes data":
         nuscene_obj.generate_n_BEV()
         st.write("Processing complete")
 
-    frame_num = st.slider('Frame Number', 0, 10, 5)
+    frame_num = st.slider('Frame Number', 1, 10, 5)
     nuscene_obj.print_result(input_parent,output_parent,folder_name,frame_num)
 
         

@@ -33,7 +33,9 @@ Step 6: !pip install nuscenes-devkit &> /dev/null  # Install nuScenes.
 
 
 ### How to run 
-
+a)Move to folder - p3_Cam2BEV
+b)Streamlit run webapp.py
+Enjoy!
 #### Inputs
 For nuscene dataset , 
 
