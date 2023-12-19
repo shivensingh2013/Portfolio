@@ -9,6 +9,7 @@ from Scripts.utils import quart_to_angles
 from Scripts.ipm import generate_ipm_image
 import streamlit as st
 from PIL import Image
+import pathlib as path
 class cam2bev_image:
     
     def __init__(self,image_name:str, input_path:str):
@@ -83,6 +84,7 @@ class nuscene_image:
             print("path already exists ,  Change the output folder name")
         return 
 
+
     def generate_1_bev(self,sample,n):
         ##Generate folder structure for input
         # print("processing sample",sample)
@@ -135,6 +137,40 @@ class nuscene_image:
         generate_ipm_image(args)
 
         return
+
+    ## generate BEV images for all the scenes provided inside the datapath folder
+    # Input - datapath :  Path of the folder containing folders 1 to n with each subfolder conatining nuscenes images along with config
+    def generate_BEV_from_images(self):
+        in_path = path.Path(self.parent+self.dir)
+
+        ## input image and config folder already present
+        output_loc =self.create_output_folder()
+
+        for fld in in_path.iterdir():
+            sample_num = str(fld.parts[-1])
+            camera_img_pair = []
+            st.write("Reading folder number" , fld.parts[-1])
+
+            for image in path.Path(fld/"images").iterdir():
+                camera_img_pair.append(str(path.Path(fld/"config"/(image.parts[-1].split(".")[0]+".yaml"))))
+                camera_img_pair.append(str(image))
+            print(camera_img_pair)
+            # st.write(camera_img_pair)
+            # Run IPM
+            args = {}
+            args["output"]= output_loc
+            args["batch"] = False
+            args["camera_img_pair"] = camera_img_pair
+            args["drone"] = self.parent+self.dir+"\\"+str(sample_num)+"\config\drone.yaml"
+            args["r"] = 20
+            args["wm"] = 20
+            args["hm"] =40
+            args["v"] = False
+            args["cc"] = False
+            args["outfile_name"] = str(sample_num) + ".jpg"
+
+            generate_ipm_image(args)
+
 
     def generate_n_BEV(self):
         next_token = self.scene_obj['first_sample_token']
