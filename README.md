@@ -14,7 +14,7 @@ o the website , look at index.html file.
    
 2) (BOSCH) AIBSE- Semantic Document Search Engine - Developed a product within Bosch to retrieve historical textual requirements from given current requirements using Attention based algorithms
    
-3) New cloth design generation - Build a vanilla diffusion model from scratch to generate new clothes style at inference.
+3) Diffusion based Cloth generation - Build a vanilla diffusion model from scratch to generate new clothes style at inference.
    
 4) Hand sign recognizer - This project is able to use the camera feed and generate prediction of the number shown by the human via hand sign.
 
