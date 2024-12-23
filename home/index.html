@@ -4,6 +4,8 @@
 	html5up.net | @ajlkn
 	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
 -->
+
+
 <html>
 	<head>
 		<title>Portfolio - ShivendraSingh </title>
@@ -11,6 +13,40 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="assets/css/main.css" />
 		<noscript><link rel="stylesheet" href="assets/css/noscript.css" /></noscript>
+		<style>
+			/* The sidebar menu */
+.sidenav {
+  height: 100%; /* Full-height: remove this if you want "auto" height */
+  width: 160px; /* Set the width of the sidebar */
+  position: fixed; /* Fixed Sidebar (stay in place on scroll) */
+  z-index: 1; /* Stay on top */
+  top: 0; /* Stay at the top */
+  right: 0;
+  background-color: #5b667d; /* Black */
+  overflow-x: hidden; /* Disable horizontal scroll */
+  padding-top: 20px;
+}
+
+/* The navigation menu links */
+.sidenav a {
+  padding: 6px 8px 6px 16px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #c6cfd9;
+  display: block;
+}
+
+/* When you mouse over the navigation links, change their color */
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+/* Style page content */
+.main {
+  margin-right: 160px; /* Same as the width of the sidebar */
+  padding: 0px 10px;
+}
+		</style>
 	</head>
 	<body class="is-preload">
 
@@ -19,24 +55,35 @@
 
 				<!-- Header -->
 					<header id="header" class="alt">
-						<h1><a href="index.html">Past Experiences and projects</a></h1>
+						<h1><a href="index.html">Relevant projects </a></h1>
 						<nav>
-							<a href="#menu">Menu</a>
+							<a href="#menu">Project Quick Links</a>
 						</nav>
 					</header>
 
-				<!-- Menu -->
-					<nav id="menu">
-						<div class="inner">
-							<h2>Menu</h2>
-							<ul class="links">
-								<li><a href="#project1">GAN based Domain Adaptation</a></li>
-								<li><a href="#">Sign Up</a></li>
+
+				<!-- Side navigation -->
+					<!-- <div class="sidenav">
+						<a href="#">About</a>
+						<a href="#">Services</a>
+						<a href="#">Clients</a>
+						<a href="#">Contact</a>
+					</div> -->
+
+				<!-- Menu v2	 -->
+					<nav id="menu" style="position: fixed; top: 0px ; right: 100px ;  height: 100%; overflow-y: auto;">
+						<div class="inner" style="padding: 10px;">
+							<h2>Relevant projects </h2>
+							<ul class="links" style="list-style-type: none; top: 100px ; margin: 10px;">
+								<li><a href="#project1" style="text-decoration: none; color: #f5f6f8; bottom:100px;">GAN based Domain Adaptation</a></li>
+								<li><a href="#project2" style="text-decoration: none; color: #f0f1f3; top:100px; ">Semantic Document Search Engine</a></li>
+								<li><a href="#project3" style="text-decoration: none; color: #f4f5f6; top:100px; ">Diffusion based Cloth generation</a></li>
+								<li><a href="#project4" style="text-decoration: none; color: #f0f3f6; top:100px; ">Hand sign recognizer</a></li>
+								<li><a href="#project5" style="text-decoration: none; color: #e9edf1; top:100px; ">Bird Eye view from Camera Images</a></li>
+								<li><a href="#project6" style="text-decoration: none; color: #eff0f2; top:100px; ">On Device Image segmentation</a></li>
 							</ul>
-							<a href="#" class="close">Close</a>
 						</div>
 					</nav>
-
 				<!-- Banner -->
 					<section id="banner">
 						<div class="profile-container" style="margin-left:25px">
@@ -74,7 +121,7 @@
 							<section id="two" class="wrapper alt spotlight style2">
 								<div class="inner">
 									<a href="#" class="image"><img src="images/2_aibse.png" width = 200  alt="" /></a>
-									<div class="content">
+									<div id ="project2"  class="content">
 										<h2 class="major">Semantic Document Search Engine</h2>
 										<p>Developed a product within Bosch to retrieve historical textual requirements from given current requirements using Attention based algorithms</p>
 										<a href="https://" style="color: rgb(0, 238, 255);"">Demo Link</a>
@@ -82,8 +129,8 @@
 								</div>
 							</section>
 
-							<section id="three" class="wrapper alt spotlight style1">
-								<div class="inner">
+							<section id="three" class="wrapper spotlight style3">
+								<div id ="project3"  class="inner">
 									<a href="#" class="image"><img src="images/3_diffusion.png" width = 200  alt="" /></a>
 									<div class="content">
 										<h2 class="major">Diffusion based Cloth generation </h2>
@@ -93,8 +140,8 @@
 								</div>
 							</section>
 
-							<section id="four" class="wrapper alt spotlight style2">
-								<div class="inner">
+							<section id="four" class="wrapper alt spotlight style4">
+								<div id ="project4"  class="inner">
 									<a href="#" class="image"><img src="images/4_hand_sign_recognizer.jfif" width = 200  alt="" /></a>
 									<div class="content">
 										<h2 class="major">Hand sign recognizer </h2>
@@ -104,8 +151,8 @@
 								</div>
 							</section>
 
-							<section id="five" class="wrapper alt spotlight style1">
-								<div class="inner">
+							<section id="five" class="wrapper spotlight style5">
+								<div id ="project5"  class="inner">
 									<a href="#" class="image"><img src="images/5_cam2bev.png" width = 200  alt="" /></a>
 									<div class="content">
 										<h2 class="major">Bird Eye view from Camera Images </h2>
@@ -115,18 +162,16 @@
 								</div>
 							</section>
 
-							<section id="size" class="wrapper alt spotlight style2">
+							<section id="six" class="wrapper alt spotlight style6">
 								<div class="inner">
 									<a href="#" class="image"><img src="images/6_image_segment.jpg" width = 200  alt="" /></a>
-									<div class="content">
+									<div id ="project6" class="content">
 										<h2 class="major">On Device Image segmentation  </h2>
 										<p>Built a pipeline for consuming a YUV image stream coming from camera ( car dashboard ) and displaying its semantic segmentation on a monitor (YUV format) . This project was built on CPP environment.</p>
 										<a href="https://" style="color: rgb(0, 238, 255);"">Demo Link</a>
 									</div>
 								</div>
 							</section>
-
-
 					</section>
 
 				<!-- Footer -->
