@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Azure Online Endpoint</title>
+</head>
+<body>
+    <h1>Azure Online Endpoint Integration</h1>
+    <textarea id="inputData" rows="5" cols="50" placeholder="Enter input data"></textarea>
+    <br><br>
+    <button onclick="callEndpoint()">Submit</button>
+    <h2>Response:</h2>
+    <pre id="response"></pre>
+
+    <script>
+        async function callEndpoint() {
+            const endpointUrl = "https://my-endpoint-int.eastus2.inference.ml.azure.com/score";
+            const apiKey = "9BrHXzl5huF9CPxSzQI45oYNirllLErQ"; // Replace with your Azure API key
+            
+            const inputData = document.getElementById("inputData").value;
+            const requestBody = {
+                input: inputData // Adjust based on your API's expected format
+            };
+
+            try {
+                const response = await fetch(endpointUrl, {
+                    method: "POST",
+                    headers: {
+                        "Authorization": `Bearer ${apiKey}`,
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify(requestBody)
+                });
+
+                if (response.ok) {
+                    const responseData = await response.json();
+                    document.getElementById("response").textContent = JSON.stringify(responseData, null, 2);
+                } else {
+                    const errorData = await response.text();
+                    document.getElementById("response").textContent = `Error: ${errorData}`;
+                }
+            } catch (error) {
+                document.getElementById("response").textContent = `Error: ${error.message}`;
+            }
+        }
+    </script>
+</body>
+</html>
