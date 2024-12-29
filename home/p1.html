@@ -20,9 +20,9 @@
             
             const inputData = document.getElementById("inputData").value;
             const requestBody = {
-                input: inputData // Adjust based on your API's expected format
+                data: inputData // Adjust based on your API's expected format
             };
-
+            print(requestBody)
             try {
                 const response = await fetch(endpointUrl, {
                     method: "POST",
